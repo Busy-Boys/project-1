@@ -1,4 +1,4 @@
-# Group Project #1 - Currently Untitled
+# Group Project #1 - Movie Master
 
 ## Links
 - Ideas Mindmap(miro - DH): https://miro.com/app/board/o9J_lLCDpmA=/
