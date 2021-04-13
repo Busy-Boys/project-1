@@ -1,0 +1,8 @@
+/* adjust to make text wrap around poster in Stage Card */
+.movie-poster {
+  height: 200px !important ;
+}
+/* own class for center images */
+.is-horizontal-center {
+  justify-content: center !important;
+}
