@@ -1,0 +1,15 @@
+{
+  // DH set spellright to turn on for markdown editing
+  "spellright.language": ["en"],
+  "spellright.documentTypes": ["markdown", "latex", "plaintext"],
+  // DH set prettier to formatter and enable formatting on save
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  // DH Force prettier to bypass local esLint rules
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true
+  }
+}
