@@ -18,37 +18,43 @@ function searchForMovies(title) {
 }
 
 function searchResultsBuilder(results) {
-  const autocomplete = document.querySelector('.auto-complete');
   const searchResults = results;
+  const mainContainer = document.querySelector('#main');
 
-  // append results dropdown
-  autocomplete.innerHTML = `
-  <div class="dropdown is-active">
-    <div class="dropdown-menu">
-      <div class="dropdown-content">
-        <a href="#" class="dropdown-item">
-          Dropdown item
-        </a>
-        <a class="dropdown-item">
-          Other dropdown item
-        </a>
-        <a href="#" class="dropdown-item is-active">
-          Active dropdown item
-        </a>
-        <a href="#" class="dropdown-item">
-          Other dropdown item
-        </a>
-        <hr class="dropdown-divider">
-        <a href="#" class="dropdown-item">
-          With a divider
-        </a>
-      </div>
+  // append results container to main section element
+  const searchResultsContainer = document.createElement('div');
+  searchResultsContainer.classList.add('container', 'box');
+  searchResultsContainer.innerHTML = `
+    <h2 class="title m-2">Search Results</h2>
+    <div id="search-results"class="columns is-mobile is-flex-wrap-wrap">
     </div>
-  </div>
   `;
+  mainContainer.prepend(searchResultsContainer);
+
+  // loop results and generate thumbnails
+  results.forEach((result) => {
+    // target element
+    const searchResultsContainer = document.querySelector('#search-results');
+    // create div
+    let newDiv = document.createElement('div');
+    // add classes
+    newDiv.classList.add('column', 'is-2', 'is-one-third-mobile');
+    // add internalHTML
+    newDiv.innerHTML = `
+    <figure class="image is2by3">
+    <img
+      src="${result.Poster}"
+    />
+    </figure>
+  `;
+    // append to container
+    searchResultsContainer.append(newDiv);
+  });
 }
 
 // TEST EXAMPLE
-searchForMovies('matrix').then((searchResults) => console.log(searchResults));
+searchForMovies('matrix').then((searchResults) =>
+  searchResultsBuilder(searchResults)
+);
 
-searchResultsBuilder();
+// searchResultsBuilder();
