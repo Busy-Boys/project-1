@@ -2,6 +2,9 @@
 const omdbApiKey = '4be7587f';
 const omdbUrl = `http://www.omdbapi.com/?apikey=${omdbApiKey}&`;
 
+// target Elements
+const searchButton = document.querySelector('#search-button');
+const searchInput = document.querySelector('#search-input');
 // function to retreive basic movie information from omdbi
 function searchForMovies(title) {
   return new Promise((resolve, reject) => {
@@ -53,8 +56,15 @@ function searchResultsBuilder(results) {
 }
 
 // TEST EXAMPLE
-searchForMovies('matrix').then((searchResults) =>
-  searchResultsBuilder(searchResults)
-);
+// searchForMovies('matrix').then((searchResults) =>
+//   searchResultsBuilder(searchResults)
+// );
 
-// searchResultsBuilder();
+//TEST event listen
+searchButton.addEventListener('click', () => {
+  const title = searchInput.value;
+  console.log(title);
+  searchForMovies(title).then((searchResults) =>
+    searchResultsBuilder(searchResults)
+  );
+});
