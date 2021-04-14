@@ -1,8 +1,15 @@
-/* adjust to make text wrap around poster in Stage Card */
+/* DH - adjust to make text wrap around poster in Stage Card */
 .movie-poster {
   height: 200px !important ;
 }
-/* own class for center images */
+/* DH - own class for center images */
 .is-horizontal-center {
   justify-content: center !important;
+}
+
+/* DH - Had to manually add this to get 1/3rd collection posters working on mobile  */
+@media screen and (max-width: 768px) {
+  .columns.is-mobile > .column.is-2 {
+    width: 33%;
+  }
 }
