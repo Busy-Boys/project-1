@@ -1,4 +1,6 @@
 # Group Project #1 - Movie Master
+## Link
+Live Deploy of main here: https://busy-boys.github.io/movie-master/
 
 ## Dave's Git Hints:
 ### Creating a feature branch
