@@ -18,182 +18,193 @@
     <nav class="navbar is-link" role="navigation" aria-label="main navigation">
       <div class="navbar-item content">
         <h1 class="navbar-item has-text-white mb-0">Movie Master</h1>
+        <div class="auto-complete"></div>
         <input
           id="search-input"
           class="navbar-item input"
           type="text"
           placeholder="Movie Tittle"
         />
+        <button id="search-button" class="navbar-item button ml-3">
+          Search
+        </button>
       </div>
     </nav>
-    <div class="container box">
-      <h2 class="title m-2">My Collection</h2>
-      <div class="columns is-mobile is-flex-wrap-wrap">
-        <div class="column is-2 is-one-third-mobile">
-          <figure class="image is-2by3">
-            <img
-              src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
-            />
-          </figure>
-        </div>
-        <div class="column is-2 is-one-third-mobile">
-          <figure class="image is-2by3">
-            <img
-              src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
-            />
-          </figure>
-        </div>
-        <div class="column is-2 is-one-third-mobile">
-          <figure class="image is-2by3">
-            <img
-              src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
-            />
-          </figure>
-        </div>
-        <div class="column is-2 is-one-third-mobile">
-          <figure class="image is-2by3">
-            <img
-              src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
-            />
-          </figure>
-        </div>
-        <div class="column is-2 is-one-third-mobile">
-          <figure class="image is-2by3">
-            <img
-              src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
-            />
-          </figure>
-        </div>
-        <div class="column is-2 is-one-third-mobile">
-          <figure class="image is-2by3">
-            <img
-              src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
-            />
-          </figure>
-        </div>
-        <div class="column is-2 is-one-third-mobile">
-          <figure class="image is-2by3">
-            <img
-              src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
-            />
-          </figure>
-        </div>
-        <div class="column is-2 is-one-third-mobile">
-          <figure class="image is-2by3">
-            <img
-              src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
-            />
-          </figure>
-        </div>
-        <div class="column is-2 is-one-third-mobile">
-          <figure class="image is-2by3">
-            <img
-              src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
-            />
-          </figure>
-        </div>
-        <div class="column is-2 is-one-third-mobile">
-          <figure class="image is-2by3">
-            <img
-              src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
-            />
-          </figure>
-        </div>
-        <div class="column is-2 is-one-third-mobile">
-          <figure class="image is-2by3">
-            <img
-              src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
-            />
-          </figure>
-        </div>
-        <div class="column is-2 is-one-third-mobile">
-          <figure class="image is-2by3">
-            <img
-              src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
-            />
-          </figure>
+    <!-- DH added to get search results target -->
+    <section id="main">
+      <div class="container box">
+        <h2 class="title m-2">My Collection</h2>
+        <div class="columns is-mobile is-flex-wrap-wrap">
+          <div class="column is-2 is-one-third-mobile">
+            <figure class="image is-2by3">
+              <img
+                src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
+              />
+            </figure>
+          </div>
+          <div class="column is-2 is-one-third-mobile">
+            <figure class="image is-2by3">
+              <img
+                src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
+              />
+            </figure>
+          </div>
+          <div class="column is-2 is-one-third-mobile">
+            <figure class="image is-2by3">
+              <img
+                src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
+              />
+            </figure>
+          </div>
+          <div class="column is-2 is-one-third-mobile">
+            <figure class="image is-2by3">
+              <img
+                src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
+              />
+            </figure>
+          </div>
+          <div class="column is-2 is-one-third-mobile">
+            <figure class="image is-2by3">
+              <img
+                src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
+              />
+            </figure>
+          </div>
+          <div class="column is-2 is-one-third-mobile">
+            <figure class="image is-2by3">
+              <img
+                src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
+              />
+            </figure>
+          </div>
+          <div class="column is-2 is-one-third-mobile">
+            <figure class="image is-2by3">
+              <img
+                src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
+              />
+            </figure>
+          </div>
+          <div class="column is-2 is-one-third-mobile">
+            <figure class="image is-2by3">
+              <img
+                src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
+              />
+            </figure>
+          </div>
+          <div class="column is-2 is-one-third-mobile">
+            <figure class="image is-2by3">
+              <img
+                src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
+              />
+            </figure>
+          </div>
+          <div class="column is-2 is-one-third-mobile">
+            <figure class="image is-2by3">
+              <img
+                src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
+              />
+            </figure>
+          </div>
+          <div class="column is-2 is-one-third-mobile">
+            <figure class="image is-2by3">
+              <img
+                src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
+              />
+            </figure>
+          </div>
+          <div class="column is-2 is-one-third-mobile">
+            <figure class="image is-2by3">
+              <img
+                src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
+              />
+            </figure>
+          </div>
         </div>
       </div>
-    </div>
-    <div id="stage" class="container box">
-      <div class="columns">
-        <div class="column is-half">
-          <div class="card">
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="movie-poster image is-128x128">
-                    <img
-                      src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
-                      alt="Placeholder image"
-                    />
-                  </figure>
+      <div id="stage" class="container box">
+        <div class="columns">
+          <div class="column is-half">
+            <div class="card">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                    <figure class="movie-poster image is-128x128">
+                      <img
+                        src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
+                        alt="Placeholder image"
+                      />
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <p class="title is-4">John Smith</p>
+                    <p class="subtitle is-6 mb-0">2005</p>
+                    <p class="subtitle is-6 mb-0">Budget: <b>4.2M</b></p>
+                    <p class="subtitle is-6 mb-0">BoxOffice: <b>10.69M</b></p>
+                    <p class="subtitle is-6 mb-0">@johnsmith</p>
+                    <!-- ALL INFO HAS TO GO IN HERE -->
+                  </div>
                 </div>
-                <div class="media-content">
-                  <p class="title is-4">John Smith</p>
-                  <p class="subtitle is-6 mb-0">2005</p>
-                  <p class="subtitle is-6 mb-0">Budget: <b>4.2M</b></p>
-                  <p class="subtitle is-6 mb-0">BoxOffice: <b>10.69M</b></p>
-                  <p class="subtitle is-6 mb-0">@johnsmith</p>
-                  <!-- ALL INFO HAS TO GO IN HERE -->
+
+                <div class="content">
+                  <!-- DESCRIPTION ETC -->
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ipsa blanditiis aliquam ab sed pariatur veniam officia quos,
+                    accusamus possimus velit aperiam expedita voluptas veritatis
+                    laborum quisquam saepe fugiat minus iure.
+                  </p>
+                  <a href="#">#css</a> <a href="#">#responsive</a>
+                  <br />
+                  <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="card">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                    <figure class="movie-poster image is-128x128">
+                      <img
+                        src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
+                        alt="Placeholder image"
+                      />
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <p class="title is-4">John Smith</p>
+                    <p class="subtitle is-6 mb-0">2005</p>
+                    <p class="subtitle is-6 mb-0">Budget: <b>4.2M</b></p>
+                    <p class="subtitle is-6 mb-0">BoxOffice: <b>10.69M</b></p>
+                    <p class="subtitle is-6 mb-0">@johnsmith</p>
+                    <!-- ALL INFO HAS TO GO IN HERE -->
+                  </div>
+                </div>
 
-              <div class="content">
-                <!-- DESCRIPTION ETC -->
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                  blanditiis aliquam ab sed pariatur veniam officia quos,
-                  accusamus possimus velit aperiam expedita voluptas veritatis
-                  laborum quisquam saepe fugiat minus iure.
-                </p>
-                <a href="#">#css</a> <a href="#">#responsive</a>
-                <br />
-                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                <div class="content">
+                  <!-- DESCRIPTION ETC -->
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ipsa blanditiis aliquam ab sed pariatur veniam officia quos,
+                    accusamus possimus velit aperiam expedita voluptas veritatis
+                    laborum quisquam saepe fugiat minus iure.
+                  </p>
+                  <a href="#">#css</a> <a href="#">#responsive</a>
+                  <br />
+                  <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="column is-half">
-          <div class="card">
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="movie-poster image is-128x128">
-                    <img
-                      src="https://cdn.cinematerial.com/p/297x/7no7wvlt/love-and-monsters-movie-cover-md.jpg"
-                      alt="Placeholder image"
-                    />
-                  </figure>
-                </div>
-                <div class="media-content">
-                  <p class="title is-4">John Smith</p>
-                  <p class="subtitle is-6 mb-0">2005</p>
-                  <p class="subtitle is-6 mb-0">Budget: <b>4.2M</b></p>
-                  <p class="subtitle is-6 mb-0">BoxOffice: <b>10.69M</b></p>
-                  <p class="subtitle is-6 mb-0">@johnsmith</p>
-                  <!-- ALL INFO HAS TO GO IN HERE -->
-                </div>
-              </div>
-
-              <div class="content">
-                <!-- DESCRIPTION ETC -->
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                  blanditiis aliquam ab sed pariatur veniam officia quos,
-                  accusamus possimus velit aperiam expedita voluptas veritatis
-                  laborum quisquam saepe fugiat minus iure.
-                </p>
-                <a href="#">#css</a> <a href="#">#responsive</a>
-                <br />
-                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
-
+    </section>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"
+    ></script>
+    <script src="./assets/js/movie.js "></script>
     <script src="./assets/js/app.js"></script>
   </body>
 </html>
