@@ -6,7 +6,7 @@ Live Deploy of main here: https://busy-boys.github.io/movie-master/
 ### Creating a feature branch
 
 1. **DON’T BE A NOOB LIKE ME 😂** 
-2. Make sure you are on the main branch!!! As these are the files you want to be working from! `git checkout main`
+2. Make sure you are on the main branch!!! (and it is up to date `git pull`) As these are the files you want to be working from! `git checkout main`
 3. Create feature branch `git checkout -b <branch name>`
 
 example name. `m10-search-by-title`
