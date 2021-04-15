@@ -91,17 +91,16 @@ function searchResultsBuilder(results) {
   });
 }
 
-//TEST event listen
+// Event Listener on search but
 searchButton.addEventListener('click', () => {
   const title = searchInput.value;
   console.log(title);
-  searchForMovies(title).then((searchResults) =>
-    searchResultsBuilder(searchResults)
-  );
-  // .catch(())
+  searchForMovies(title)
+    .then((searchResults) => searchResultsBuilder(searchResults))
+    .catch(() => console.error('Movie Not Found or API Down'));
 });
 
 //TEST - AUTOGEN for quick UI CHanges
-searchForMovies('the godfather').then((searchResults) =>
-  searchResultsBuilder(searchResults)
-);
+// searchForMovies('the godfather').then((searchResults) =>
+//   searchResultsBuilder(searchResults)
+// );
