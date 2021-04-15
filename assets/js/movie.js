@@ -21,8 +21,13 @@ function searchForMovies(title) {
   });
 }
 
+// builds the search results container
 function searchResultsBuilder(results) {
-  const searchResults = results;
+  let searchResults = results;
+  // slice search results to six
+  if (searchResults.length > 6) {
+    searchResults = searchResults.slice(0, 6);
+  }
   const mainContainer = document.querySelector('#main');
 
   // append results container to main section element
@@ -70,11 +75,6 @@ function searchResultsBuilder(results) {
   });
 }
 
-// TEST EXAMPLE
-// searchForMovies('matrix').then((searchResults) =>
-//   searchResultsBuilder(searchResults)
-// );
-
 //TEST event listen
 searchButton.addEventListener('click', () => {
   const title = searchInput.value;
@@ -82,4 +82,5 @@ searchButton.addEventListener('click', () => {
   searchForMovies(title).then((searchResults) =>
     searchResultsBuilder(searchResults)
   );
+  // .catch(())
 });
