@@ -1,6 +1,6 @@
 // omdb API key DH
 const omdbApiKey = '4be7587f';
-const omdbUrl = `http://www.omdbapi.com/?apikey=${omdbApiKey}&`;
+const omdbUrl = `https://www.omdbapi.com/?apikey=${omdbApiKey}&`;
 
 // target Elements
 const searchButton = document.querySelector('#search-button');
