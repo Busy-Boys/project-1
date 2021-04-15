@@ -66,7 +66,7 @@ function searchResultsBuilder(results) {
   console.log(newResults);
 
   // loop results and generate thumbnails
-  newResults.forEach((result) => {
+  newResults.forEach((result, i) => {
     // target element
     const searchResultsContainer = document.querySelector('#search-results');
     // create div
@@ -76,11 +76,14 @@ function searchResultsBuilder(results) {
     // add internalHTML
     newDiv.innerHTML = `
     <figure class="image is2by3">
+    <center>
     <img
-      src="${result.Poster}"
+    src="${result.Poster}"
     />
+    <button id="add-collection-${i}" class="button is-primary m-2">Add to Collection</button>
     <p class="is-family-monospace has-text-weight-semibold">${result.Title}</p>
     <p class="is-family-monospace">${result.Year}</p>
+    </center>
     </figure>
   `;
     // append to container
@@ -97,3 +100,8 @@ searchButton.addEventListener('click', () => {
   );
   // .catch(())
 });
+
+//TEST - AUTOGEN for quick UI CHanges
+searchForMovies('the godfather').then((searchResults) =>
+  searchResultsBuilder(searchResults)
+);
