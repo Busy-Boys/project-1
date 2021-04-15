@@ -24,15 +24,28 @@ function searchForMovies(title) {
 // builds the search results container
 function searchResultsBuilder(results) {
   let searchResults = results;
+  // check if not a movie and delete -- had to add decrementor to account for the array length changing
+  for (let i = 0; i < searchResults.length; i++) {
+    if (searchResults[i].Type !== 'movie') {
+      searchResults.splice(i, 1);
+      i--;
+    }
+  }
   // slice search results to six
   if (searchResults.length > 6) {
     searchResults = searchResults.slice(0, 6);
   }
   const mainContainer = document.querySelector('#main');
 
+  // delete old search results if they exist
+  const existingSearchResults = document.querySelector('.search-results');
+  if (existingSearchResults) {
+    existingSearchResults.remove();
+  }
+
   // append results container to main section element
   const searchResultsContainer = document.createElement('div');
-  searchResultsContainer.classList.add('container', 'box');
+  searchResultsContainer.classList.add('search-results', 'container', 'box');
   searchResultsContainer.innerHTML = `
     <h2 class="title m-2">Search Results</h2>
     <div id="search-results"class="columns is-mobile is-flex-wrap-wrap">
@@ -49,7 +62,7 @@ function searchResultsBuilder(results) {
     });
   }
 
-  newResults = uniqBy(results, JSON.stringify);
+  newResults = uniqBy(searchResults, JSON.stringify);
   console.log(newResults);
 
   // loop results and generate thumbnails
@@ -66,8 +79,8 @@ function searchResultsBuilder(results) {
     <img
       src="${result.Poster}"
     />
-    <p class="is-family-monospace">"${result.Title}"</p>
-    <p class="is-family-monospace">"${result.Year}"</p>
+    <p class="is-family-monospace has-text-weight-semibold">${result.Title}</p>
+    <p class="is-family-monospace">${result.Year}</p>
     </figure>
   `;
     // append to container
