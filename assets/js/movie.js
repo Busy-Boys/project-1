@@ -89,7 +89,7 @@ function searchResultsBuilder(results) {
         <img
           src="${result.Poster}"
         />
-        <button id="add-collection-${i}" class="button is-primary mt-2 is-size-10-tablet">
+        <button data-imdb="${result.imdbID}" id="add-collection-${i}" class="button is-primary mt-2 is-size-10-tablet">
           <span class="icon is-small">
           <i class="fas fa-plus"></i>
           </span>
@@ -104,6 +104,14 @@ function searchResultsBuilder(results) {
   `;
     // append to container
     searchResultsContainer.append(newDiv);
+    // add event listener to add button
+    addButtonSelector = document.querySelector(`#add-collection-${i}`);
+    addButtonSelector.addEventListener('click', () => {
+      const imdbID = document.querySelector(`#add-collection-${i}`).dataset
+        .imdb;
+      //Ritz's function goes HERE!!
+      console.log(imdbID);
+    });
   });
 }
 
@@ -118,6 +126,6 @@ searchButton.addEventListener('click', () => {
 
 // TEST - AUTOGEN for quick UI CHanges
 
-// searchForMovies('the godfather').then((searchResults) =>
-//   searchResultsBuilder(searchResults)
-// );
+searchForMovies('the godfather').then((searchResults) =>
+  searchResultsBuilder(searchResults)
+);
