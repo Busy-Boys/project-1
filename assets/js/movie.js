@@ -5,6 +5,7 @@ const omdbUrl = `http://www.omdbapi.com/?apikey=${omdbApiKey}&`;
 // target Elements
 const searchButton = document.querySelector('#search-button');
 const searchInput = document.querySelector('#search-input');
+
 // function to retreive basic movie information from omdbi
 function searchForMovies(title) {
   return new Promise((resolve, reject) => {
@@ -31,6 +32,14 @@ function searchResultsBuilder(results) {
       i--;
     }
   }
+  // delete movies that DONT have cover art -- seem to be 'off-brand' anyway
+  for (let i = 0; i < searchResults.length; i++) {
+    if (searchResults[i].Poster === 'N/A') {
+      searchResults.splice(i, 1);
+      i--;
+    }
+  }
+
   // slice search results to six
   if (searchResults.length > 6) {
     searchResults = searchResults.slice(0, 6);
@@ -76,14 +85,21 @@ function searchResultsBuilder(results) {
     // add internalHTML
     newDiv.innerHTML = `
     <figure class="image is2by3">
-    <center>
-    <img
-    src="${result.Poster}"
-    />
-    <button id="add-collection-${i}" class="button is-primary m-2">Add to Collection</button>
-    <p class="is-family-monospace has-text-weight-semibold">${result.Title}</p>
-    <p class="is-family-monospace">${result.Year}</p>
-    </center>
+      <center>
+        <img
+          src="${result.Poster}"
+        />
+        <button id="add-collection-${i}" class="button is-primary mt-2 is-size-10-tablet">
+          <span class="icon is-small">
+          <i class="fas fa-plus"></i>
+          </span>
+          <span>
+            Add
+          </span>
+        </button>
+        <p class="is-family-monospace has-text-weight-semibold">${result.Title}</p>
+        <p class="is-family-monospace">${result.Year}</p>
+      </center>
     </figure>
   `;
     // append to container
@@ -100,7 +116,8 @@ searchButton.addEventListener('click', () => {
     .catch(() => console.error('Movie Not Found or API Down'));
 });
 
-//TEST - AUTOGEN for quick UI CHanges
+// TEST - AUTOGEN for quick UI CHanges
+
 // searchForMovies('the godfather').then((searchResults) =>
 //   searchResultsBuilder(searchResults)
 // );
