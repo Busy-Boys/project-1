@@ -110,6 +110,7 @@ function searchResultsBuilder(results) {
       const imdbID = document.querySelector(`#add-collection-${i}`).dataset
         .imdb;
       //Ritz's function goes HERE!!
+      getFilmInformation(imdbID);
       console.log(imdbID);
     });
   });
