@@ -35,32 +35,30 @@ function searchResultsBuilder(results) {
   `;
   mainContainer.prepend(searchResultsContainer);
 
+  // RD added this code, talk about to discuss tonight -- Seems like duplication removal?
   function uniqBy(results, key) {
     var seen = {};
-    return results.filter(function(item) {
-        var k = key(item);
-        return seen.hasOwnProperty(k) ? false : (seen[k] = true);
-    })
-}
+    return results.filter(function (item) {
+      var k = key(item);
+      return seen.hasOwnProperty(k) ? false : (seen[k] = true);
+    });
+  }
 
-newResults = uniqBy(results, JSON.stringify)
-console.log(newResults);
+  newResults = uniqBy(results, JSON.stringify);
+  console.log(newResults);
 
   // loop results and generate thumbnails
   newResults.forEach((result) => {
-
-    
-
-     // target element
+    // target element
     const searchResultsContainer = document.querySelector('#search-results');
     // create div
     let newDiv = document.createElement('div');
     // add classes
-   newDiv.classList.add('column', 'is-2', 'is-one-third-mobile');
+    newDiv.classList.add('column', 'is-2', 'is-one-third-mobile');
     // add internalHTML
     newDiv.innerHTML = `
     <figure class="image is2by3">
-    <img 
+    <img
       src="${result.Poster}"
     />
     <p class="is-family-monospace">"${result.Title}"</p>
@@ -69,8 +67,6 @@ console.log(newResults);
   `;
     // append to container
     searchResultsContainer.append(newDiv);
-
-  
   });
 }
 
