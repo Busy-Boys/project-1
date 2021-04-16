@@ -72,7 +72,7 @@ function searchResultsBuilder(results) {
   }
 
   newResults = uniqBy(searchResults, JSON.stringify);
-  console.log(newResults);
+  
 
   // loop results and generate thumbnails
   newResults.forEach((result, i) => {
