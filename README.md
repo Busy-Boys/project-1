@@ -26,6 +26,7 @@ Probably not a great idea if you are working on the feature with somebody else. 
 - Ideas Mindmap(miro - DH): https://miro.com/app/board/o9J_lLCDpmA=/
 - Press Release(gDocs - RD): https://docs.google.com/document/d/1Q2Gf5zk3omoVm2tt6A052eonAAIgv9Tv5nCK8J4AOdo/edit
 - User Story Map(miro - RD): https://miro.com/app/board/o9J_lLHiAz8=/
+- Presentation (gDocs - DH): https://docs.google.com/presentation/d/1gv9gyDsamKki7G_IJToTdn2gSMKsKPZG3JOmLZzKVPc/edit?usp=sharing
 
 ## Technology Used
 - Bulma: https://bulma.io/documentation/
