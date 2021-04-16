@@ -11,7 +11,7 @@ Live Deploy of main here: https://busy-boys.github.io/movie-master/
 
 example name. `m10-search-by-title`
 
-### Somebody changed something on your main branch and you want it in your feature branch?
+### Somebody changed something on the main branch and you want it in your feature branch?
 Probably not a great idea if you are working on the feature with somebody else. If so, **communicate** 
 
 1. **In your feature branch (checked-out)** Stash whatever you are working on (these will be changes since your last commit) These just go to a holding area. `git stash`
