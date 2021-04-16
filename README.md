@@ -30,4 +30,5 @@ Probably not a great idea if you are working on the feature with somebody else. 
 ## Technology Used
 - Bulma: https://bulma.io/documentation/
 - OMDb API(Movie Info): http://www.omdbapi.com/
+- Tmdb API(Deeper Movie Info[Budget & Revenue]): https://developers.themoviedb.org/3/movies/get-movie-details
 - Utelly API(Streaming Services Search): https://rapidapi.com/utelly/api/utelly/pricing
