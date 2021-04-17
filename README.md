@@ -6,7 +6,7 @@ Live Deploy of main here: https://busy-boys.github.io/movie-master/
 ### Going back to your last commit.
 I use this a bit if I get stuck going down the wrong tangent and want to get back to some working code! - it just 'rewinds' all your files so they match your last **LOCAL** commit. This is another advantage to commititng regularly! no more frantic ctrl+z'ing !!! :joycat: 
 
-####Non Destructive
+#### Non Destructive
 1. `git stash` -- stashes changes (on your local machine. - not sure if they find their way to git!)
 2. it will tell you what it did and where it is has thrown you back to.
 3. if that was a mistake just bring the latest stash back with `git stash pop`
@@ -15,7 +15,7 @@ I use this a bit if I get stuck going down the wrong tangent and want to get bac
 You may notice that you now have a `*1` next to your branch in the terminal - this just means that you have a stash sitting around.
 If this annoys you and you dont need it, just clear the stash out with `git stash clear`
 
-####Destructive -- prob only if you are comfortable and know you really dont want the changes! 
+#### Destructive -- prob only if you are comfortable and know you really dont want the changes! 
 1. `git reset --hard HEAD`
 2. it should tell how which commit you are back to + comment and your files are all rolled bcak to that commit! 
 
