@@ -22,25 +22,22 @@ function getFinancialInfo(imdbID) {
       return response.json();
     }).then((TMDbData2) => {
       console.log(TMDbData2);
-      var budget = TMDbData2.budget;
+      var originalBudget = TMDbData2.budget;
 
-      var revenue = TMDbData2.revenue;
+      var originalRevenue = TMDbData2.revenue;
 
       var releaseDate = TMDbData2.release_date;
 
       var overview = TMDbData2.overview;
 
-      var financials = {
-        Overview: overview,
-        Revenue: revenue,
-        Budget: budget,
-        Year: releaseDate,
+      var originalFinancials = {
+        overviewProperty: overview,
+        originalRevenueProperty: originalRevenue,
+        originalBudgetProperty: originalBudget,
+        yearProperty: releaseDate,
       }; // Creating an object containing financial info
-      console.log(financials);
 
-      console.log(releaseDate);
       var yearReleased = releaseDate.substring(0, 4); // Only need year (not month or day), so using substring to take first four values. This will work until the year 10 000AD.
-      console.log(yearReleased);
 
       let CPIObject = {
         // AN object containing all the Consumer price indices for each year starting with 1913.
@@ -155,18 +152,20 @@ function getFinancialInfo(imdbID) {
         1913: 9.9,
       };
 
-      var adjustedrevenue = (263.158 / CPIObject[yearReleased]) * revenue;
-      console.log(adjustedrevenue);
+      var adjustedRevenue =
+        (263.158 / CPIObject[yearReleased]) * originalRevenue;
 
-      var adjustedbudget = (263.158 / CPIObject[yearReleased]) * budget;
-      console.log(adjustedbudget);
+      var adjustedBudget = (263.158 / CPIObject[yearReleased]) * originalBudget;
 
       var adjustedFinancials = {
-        Overview: overview,
-        Revenue: adjustedrevenue,
-        Budget: adjustedbudget,
+        overviewProperty: overview,
+        adjustedRevenueProperty: adjustedRevenue,
+        adjustedBudgetProperty: adjustedBudget,
+        originalRevenueProperty: originalRevenue,
+        originalBudgetProperty: originalBudget,
       };
       console.log(adjustedFinancials);
+      return adjustedFinancials;
     });
   });
 }
