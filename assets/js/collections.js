@@ -60,6 +60,57 @@ function getFilmInformation(imdbID) {
       // store into localStorage
       localStorage.setItem('Collection', JSON.stringify(collection));
     });
+
+  constructCollectionHTML();
+}
+
+function constructCollectionHTML() {
+  let collection = localStorage.getItem('Collection');
+
+  collection = JSON.parse(collection);
+
+  // create a div
+  let collectionDiv = document.createElement('div');
+
+  // selecting my-collection div by id
+  let container = document.querySelector('#my-collection');
+  // assign classes:
+  // column is-2 is-one-third-mobile
+  collectionDiv.classList.add('column', 'is-2', 'is-one-third-mobile');
+
+  // change innerHTML to template
+  for (let i = 0; i < collection.length; i++) {
+    collectionDiv.innerHTML = `<figure class="image is2by3">
+    <center>
+      <img
+        src="${collection[i].posterUrl}"
+      />
+      <div class="buttons has-addons is-centered is-medium m-2">
+        <button class="button">
+          <span class="icon is-small">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </button>
+        <button class="button is-danger">
+          <span class="icon is-small">
+            <i class="fas fa-trash-alt"></i>
+          </span>
+        </button>
+        <button class="button">
+          <span class="icon is-small">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </button>
+      </div>
+      <p class="is-family-monospace has-text-weight-semibold">
+        ${collection[i].title}
+      </p>
+      <p class="is-family-monospace">${collection[i].year}</p>
+    </center>
+  </figure>`;
+    // append div created to my-collection
+    container.append(collectionDiv);
+  }
 }
 
 // getFilmInformation(imdbID);
