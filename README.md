@@ -45,6 +45,7 @@ Probably not a great idea if you are working on the feature with somebody else. 
 - Presentation (gDocs - DH): https://docs.google.com/presentation/d/1gv9gyDsamKki7G_IJToTdn2gSMKsKPZG3JOmLZzKVPc/edit?usp=sharing
 
 ## Technology Used
+- Font Awesome Icons: https://fontawesome.com/icons
 - Bulma: https://bulma.io/documentation/
 - OMDb API(Movie Info): http://www.omdbapi.com/
 - Tmdb API(Deeper Movie Info[Budget & Revenue]): https://developers.themoviedb.org/3/movies/get-movie-details
