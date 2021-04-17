@@ -68,17 +68,19 @@ function constructCollectionHTML() {
   let collection = localStorage.getItem('Collection');
 
   collection = JSON.parse(collection);
+  console.log('mycollection:', collection);
+  // selecting my-collection div by id
+  let container = document.querySelector('#my-collection');
 
   // create a div
   let collectionDiv = document.createElement('div');
 
-  // selecting my-collection div by id
-  let container = document.querySelector('#my-collection');
   // assign classes:
   // column is-2 is-one-third-mobile
   collectionDiv.classList.add('column', 'is-2', 'is-one-third-mobile');
 
   // change innerHTML to template
+  // unsure if this loop is necessary, or if working at all
   for (let i = 0; i < collection.length; i++) {
     collectionDiv.innerHTML = `<figure class="image is2by3">
     <center>
