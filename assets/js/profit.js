@@ -227,20 +227,20 @@ function buildFinanceElement(objectIn, side) {
     </p>
 
     <p class="card-footer-item">
-      <span>
-        <b>Revenue (${financeObject.yearProperty}): $</b>
-        ${finalOriginalRevenue}
+      <span><b>Budget (2021): $</b>
+      ${finalAdjustedBudget}
       </span>
     </p>
   </div>
 
   <div class="card-footer">
-    <p class="card-footer-item">
-      <span><b>Budget (2021): $</b>
-      ${finalAdjustedBudget}
-      </span>
-    </p>
 
+    <p class="card-footer-item">
+    <span>
+      <b>Revenue (${financeObject.yearProperty}): $</b>
+      ${finalOriginalRevenue}
+    </span>
+  </p>
     <p class="card-footer-item">
       <span> <b>Revenue (2021): $</b>
       ${finalAdjustedRevenue}
@@ -251,16 +251,16 @@ function buildFinanceElement(objectIn, side) {
 
   <div class="card-footer">
     <p class="card-footer-item">
-      <span><b>Profit: $</b>
+      <span><b>ROI: </b>
+     ${roundedROI}
+      %</span>
+    </p>
+    <p class="card-footer-item">
+      <span><b>Profit (2021): $</b>
       ${finalProfit}
       </span>
     </p>
 
-    <p class="card-footer-item">
-      <span><b>ROI: </b>
-      ${roundedROI}
-      %</span>
-    </p>
   </div>
 
   `;
