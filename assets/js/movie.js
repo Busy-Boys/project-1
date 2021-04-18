@@ -72,7 +72,6 @@ function searchResultsBuilder(results) {
   }
 
   newResults = uniqBy(searchResults, JSON.stringify);
-  
 
   // loop results and generate thumbnails
   newResults.forEach((result, i) => {
@@ -105,7 +104,7 @@ function searchResultsBuilder(results) {
     // append to container
     searchResultsContainer.append(newDiv);
     // add event listener to add button
-    addButtonSelector = document.querySelector(`#add-collection-${i}`);
+    let addButtonSelector = document.querySelector(`#add-collection-${i}`);
     addButtonSelector.addEventListener('click', () => {
       const imdbID = document.querySelector(`#add-collection-${i}`).dataset
         .imdb;
@@ -127,6 +126,6 @@ searchButton.addEventListener('click', () => {
 
 // TEST - AUTOGEN for quick UI CHanges
 
-searchForMovies('the godfather').then((searchResults) =>
-  searchResultsBuilder(searchResults)
-);
+// searchForMovies('the godfather').then((searchResults) =>
+//   searchResultsBuilder(searchResults)
+// );
