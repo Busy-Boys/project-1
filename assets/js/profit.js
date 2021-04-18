@@ -165,7 +165,7 @@ function getFinancialInfo(imdbID) {
         originalBudgetProperty: originalBudget,
       };
       console.log(adjustedFinancials);
-      return adjustedFinancials;
+      buildFinanceElement(adjustedFinancials);
     });
   });
 }
@@ -177,3 +177,53 @@ var imdbID1 = 'tt0034583'; // Testing above function with a few imdb ID's
 getFinancialInfo(imdbID1);
 //getFinancialInfo(imdbID2);
 //getFinancialInfo(imdbID3);
+
+//Function to build finance footer element
+
+function buildFinanceElement(objectIn) {
+  let financeObject = objectIn;
+  let profit =
+    financeObject.adjustedRevenueProperty -
+    financeObject.adjustedBudgetProperty;
+  let ROI = profit / financeObject.adjustedBudgetProperty;
+  console.log(financeObject);
+  let cardFooterDiv = document.createElement('div');
+  cardFooterDiv.classList.add('card-footer');
+  document.querySelector('.card-footer').innerHTML =
+    "<div class='card-footer'>" +
+    "<p class='card-footer-item'>" +
+    '<span><b>Budget (2005): $</b>' +
+    financeObject.originalBudgetProperty +
+    '</span>' +
+    '</p>' +
+    "<p class='card-footer-item'>" +
+    '<span> <b>Revenue (2005): $</b>' +
+    financeObject.originalRevenueProperty +
+    '</span>' +
+    '</p>' +
+    '</div>' +
+    "<div class='card-footer'>" +
+    "<p class='card-footer-item'>" +
+    '<span><b>Budget (2021): $</b>' +
+    financeObject.adjustedBudgetProperty +
+    '</span>' +
+    '</p>' +
+    "<p class='card-footer-item'>" +
+    '<span> <b>Revenue (2021): $</b>' +
+    financeObject.adjustedRevenueProperty +
+    '</span>' +
+    '</p>' +
+    '</div>' +
+    "<div class='card-footer'>" +
+    "<p class='card-footer-item'>" +
+    '<span><b>Profit: $</b>' +
+    profit +
+    '</span>' +
+    '</p>' +
+    "<p class='card-footer-item'>" +
+    '<span><b>ROI: </b>' +
+    ROI +
+    '%</span>' +
+    '</p>' +
+    '</div>';
+}
