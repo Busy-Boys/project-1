@@ -200,8 +200,8 @@ function buildFinanceElement(objectIn, side) {
   // Profit = Revenue-Budget
   let profit = roundedAdjustedRevenue - roundedAdjustedBudget;
   // ROI
-  let ROI = (profit / roundedAdjustedBudget) * 100;
-  let roundedROI = Math.round(ROI);
+  let ROI = profit / roundedAdjustedBudget;
+  let roundedROI = ROI.toFixed(2);
 
   let finalAdjustedBudget = roundedAdjustedBudget.toLocaleString('en-US');
   let finalAdjustedRevenue = roundedAdjustedRevenue.toLocaleString('en-US');
@@ -221,14 +221,14 @@ function buildFinanceElement(objectIn, side) {
 
     <p class="card-footer-item">
       <span>
-        <b>Budget (${financeObject.yearProperty}): $</b>
-        ${finalOriginalBudget}
+        <b>Budget (${financeObject.yearProperty}): </b>
+        $${finalOriginalBudget}
       </span>
     </p>
 
     <p class="card-footer-item">
-      <span><b>Budget (2021): $</b>
-      ${finalAdjustedBudget}
+      <span><b>Budget (2021): </b>
+      $${finalAdjustedBudget}
       </span>
     </p>
   </div>
@@ -237,13 +237,13 @@ function buildFinanceElement(objectIn, side) {
 
     <p class="card-footer-item">
     <span>
-      <b>Revenue (${financeObject.yearProperty}): $</b>
-      ${finalOriginalRevenue}
+      <b>Revenue (${financeObject.yearProperty}): </b>
+      $${finalOriginalRevenue}
     </span>
   </p>
     <p class="card-footer-item">
-      <span> <b>Revenue (2021): $</b>
-      ${finalAdjustedRevenue}
+      <span> <b>Revenue (2021): </b>
+      $${finalAdjustedRevenue}
       </span>
     </p>
 
@@ -251,13 +251,12 @@ function buildFinanceElement(objectIn, side) {
 
   <div class="card-footer">
     <p class="card-footer-item">
-      <span><b>ROI: </b>
-     ${roundedROI}
-      %</span>
+      <span><b>Profit Multiplier: </b>
+     ${roundedROI}x</span>
     </p>
     <p class="card-footer-item">
-      <span><b>Profit (2021): $</b>
-      ${finalProfit}
+      <span><b>Profit (2021): </b>
+      $${finalProfit}
       </span>
     </p>
 
