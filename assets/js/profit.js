@@ -158,6 +158,7 @@ function getFinancialInfo(imdbID, side) {
       var adjustedBudget = (263.158 / CPIObject[yearReleased]) * originalBudget;
 
       var adjustedFinancials = {
+        yearProperty: yearReleased,
         overviewProperty: overview,
         adjustedRevenueProperty: adjustedRevenue,
         adjustedBudgetProperty: adjustedBudget,
@@ -184,58 +185,84 @@ function buildFinanceElement(objectIn, side) {
   let stageSide = side;
   let targetElement = '';
   if (stageSide === 'left') {
-    targetElement = document.querySelector('#stage-card-left');
+    targetElement = document.querySelector('#inner-card-left');
   } else {
-    targetElement = document.querySelector('#stage-card-right');
+    targetElement = document.querySelector('#inner-card-right');
   }
 
   let financeObject = objectIn;
+  //Rounding
+  let roundedAdjustedBudget = Math.round(financeObject.adjustedBudgetProperty);
+  let roundedAdjustedRevenue = Math.round(
+    financeObject.adjustedRevenueProperty
+  );
+
   // Profit = Revenue-Budget
-  let profit =
-    financeObject.adjustedRevenueProperty -
-    financeObject.adjustedBudgetProperty;
+  let profit = roundedAdjustedRevenue - roundedAdjustedBudget;
   // ROI
-  let ROI = profit / financeObject.adjustedBudgetProperty;
+  let ROI = profit / roundedAdjustedBudget;
+  let roundedROI = Math.round(ROI);
+
+  let finalAdjustedBudget = roundedAdjustedBudget.toLocaleString('en-US');
+  let finalAdjustedRevenue = roundedAdjustedRevenue.toLocaleString('en-US');
+  let finalProfit = profit.toLocaleString('en-US');
+  let finalOriginalRevenue = financeObject.originalRevenueProperty.toLocaleString(
+    'en-US'
+  );
+  let finalOriginalBudget = financeObject.originalBudgetProperty.toLocaleString(
+    'en-US'
+  );
+
   console.log(financeObject);
   let cardFooterDiv = document.createElement('div');
   cardFooterDiv.classList.add('card-footer');
   cardFooterDiv.innerHTML = `
-    <p class='card-footer-item'> 
-    <span><b>Budget (2005): $</b> 
-    ${financeObject.originalBudgetProperty}
-    </span> 
+    
+    <p class="card-footer-item"> 
+      <span>
+        <b>Budget (${financeObject.yearProperty}): $</b> 
+        ${finalOriginalBudget}
+      </span> 
     </p>
-    <p class='card-footer-item'>
-    <span> <b>Revenue (2005): $</b>
-    ${financeObject.originalRevenueProperty} 
-    </span>
+    
+    <p class="card-footer-item">
+      <span> 
+        <b>Revenue (${financeObject.yearProperty}): $</b>
+        ${finalOriginalRevenue} 
+      </span>
     </p>
-    </div>
-    <div class='card-footer'>
-    <p class='card-footer-item'>
-    <span><b>Budget (2021): $</b>
-    ${financeObject.adjustedBudgetProperty}
-    </span>
+  </div>
+    
+  <div class="card-footer">
+    <p class="card-footer-item">
+      <span><b>Budget (2021): $</b>
+      ${finalAdjustedBudget}
+      </span>
     </p>
-    <p class='card-footer-item'>
-    <span> <b>Revenue (2021): $</b>
-    ${financeObject.adjustedRevenueProperty}
-    </span>
+    
+    <p class="card-footer-item">
+      <span> <b>Revenue (2021): $</b>
+      ${finalAdjustedRevenue}
+      </span>
     </p>
-    </div>
-    <div class='card-footer'> 
-    <p class='card-footer-item'> 
-    <span><b>Profit: $</b> 
-    ${profit} 
-    </span> 
+    
+  </div>
+    
+  <div class="card-footer"> 
+    <p class="card-footer-item"> 
+      <span><b>Profit: $</b> 
+      ${finalProfit} 
+      </span> 
     </p> 
-    <p class='card-footer-item'> 
-    <span><b>ROI: </b> 
-    ${ROI} 
-    %</span> 
+    
+    <p class="card-footer-item"> 
+      <span><b>ROI: </b> 
+      ${roundedROI} 
+      %</span> 
     </p> 
-    </div>
-    `;
+  </div>
+    
+  `;
 
   targetElement.appendChild(cardFooterDiv);
 }
