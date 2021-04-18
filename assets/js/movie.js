@@ -72,7 +72,6 @@ function searchResultsBuilder(results) {
   }
 
   newResults = uniqBy(searchResults, JSON.stringify);
-  
 
   // loop results and generate thumbnails
   newResults.forEach((result, i) => {
@@ -127,6 +126,6 @@ searchButton.addEventListener('click', () => {
 
 // TEST - AUTOGEN for quick UI CHanges
 
-searchForMovies('the godfather').then((searchResults) =>
-  searchResultsBuilder(searchResults)
-);
+// searchForMovies('the godfather').then((searchResults) =>
+//   searchResultsBuilder(searchResults)
+// );
