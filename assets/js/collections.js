@@ -110,13 +110,15 @@ function constructCollectionHTML() {
     compareLeftButton.addEventListener('click', () => {
       const imdbID = document.querySelector(`#compare-left-${i}`).dataset.imdb;
       // Dave's function goes here!!
+      stageCardDomBuilder(imdbID, 'left');
       console.log('comp-left-button-click', imdbID);
     });
-    // compare right button
+    // add event listener compare right button
     let compareRightButton = document.querySelector(`#compare-right-${i}`);
     compareRightButton.addEventListener('click', () => {
       const imdbID = document.querySelector(`#compare-right-${i}`).dataset.imdb;
       // Dave's function goes here!!
+      stageCardDomBuilder(imdbID, 'right');
       console.log('comp-right-click', imdbID);
     });
 

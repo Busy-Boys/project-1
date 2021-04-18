@@ -24,6 +24,11 @@ function stageCardDomBuilder(imdb, side) {
   } else {
     targetElement = document.querySelector('#stage-card-right');
   }
+  // clear out stageCard if contains content
+  if (targetElement.innerHTML !== '') {
+    targetElement.innerHTML = '';
+  }
+
   // start building card with card div
   let newCard = document.createElement('div');
   newCard.classList.add('card');
@@ -74,4 +79,4 @@ function stageCardDomBuilder(imdb, side) {
   targetElement.appendChild(newCard);
 }
 
-stageCardDomBuilder('tt0068646', 'left');
+// stageCardDomBuilder('tt0068646', 'left');
