@@ -1,5 +1,5 @@
 // Calling TMDb API
-function getFinancialInfo(imdbID) {
+function getFinancialInfo(imdbID, side) {
   // API url #1. Takes imdbID.
   var TMDbUrl =
     'https://api.themoviedb.org/3/find/' +
@@ -165,7 +165,7 @@ function getFinancialInfo(imdbID) {
         originalBudgetProperty: originalBudget,
       };
       console.log(adjustedFinancials);
-      buildFinanceElement(adjustedFinancials);
+      buildFinanceElement(adjustedFinancials, side);
     });
   });
 }
@@ -174,56 +174,68 @@ var imdbID1 = 'tt0034583'; // Testing above function with a few imdb ID's
 //var imdbID2 = 'tt0120338';
 //var imdbID3 = 'tt0169547';
 
-getFinancialInfo(imdbID1);
+//getFinancialInfo(imdbID1);
 //getFinancialInfo(imdbID2);
 //getFinancialInfo(imdbID3);
 
 //Function to build finance footer element
 
-function buildFinanceElement(objectIn) {
+function buildFinanceElement(objectIn, side) {
+  let stageSide = side;
+  let targetElement = '';
+  if (stageSide === 'left') {
+    targetElement = document.querySelector('#stage-card-left');
+  } else {
+    targetElement = document.querySelector('#stage-card-right');
+  }
+
   let financeObject = objectIn;
+  // Profit = Revenue-Budget
   let profit =
     financeObject.adjustedRevenueProperty -
     financeObject.adjustedBudgetProperty;
+  // ROI
   let ROI = profit / financeObject.adjustedBudgetProperty;
   console.log(financeObject);
   let cardFooterDiv = document.createElement('div');
   cardFooterDiv.classList.add('card-footer');
-  document.querySelector('.card-footer').innerHTML =
-    "<div class='card-footer'>" +
-    "<p class='card-footer-item'>" +
-    '<span><b>Budget (2005): $</b>' +
-    financeObject.originalBudgetProperty +
-    '</span>' +
-    '</p>' +
-    "<p class='card-footer-item'>" +
-    '<span> <b>Revenue (2005): $</b>' +
-    financeObject.originalRevenueProperty +
-    '</span>' +
-    '</p>' +
-    '</div>' +
-    "<div class='card-footer'>" +
-    "<p class='card-footer-item'>" +
-    '<span><b>Budget (2021): $</b>' +
-    financeObject.adjustedBudgetProperty +
-    '</span>' +
-    '</p>' +
-    "<p class='card-footer-item'>" +
-    '<span> <b>Revenue (2021): $</b>' +
-    financeObject.adjustedRevenueProperty +
-    '</span>' +
-    '</p>' +
-    '</div>' +
-    "<div class='card-footer'>" +
-    "<p class='card-footer-item'>" +
-    '<span><b>Profit: $</b>' +
-    profit +
-    '</span>' +
-    '</p>' +
-    "<p class='card-footer-item'>" +
-    '<span><b>ROI: </b>' +
-    ROI +
-    '%</span>' +
-    '</p>' +
-    '</div>';
+  cardFooterDiv.innerHTML = `
+    <p class='card-footer-item'> 
+    <span><b>Budget (2005): $</b> 
+    ${financeObject.originalBudgetProperty}
+    </span> 
+    </p>
+    <p class='card-footer-item'>
+    <span> <b>Revenue (2005): $</b>
+    ${financeObject.originalRevenueProperty} 
+    </span>
+    </p>
+    </div>
+    <div class='card-footer'>
+    <p class='card-footer-item'>
+    <span><b>Budget (2021): $</b>
+    ${financeObject.adjustedBudgetProperty}
+    </span>
+    </p>
+    <p class='card-footer-item'>
+    <span> <b>Revenue (2021): $</b>
+    ${financeObject.adjustedRevenueProperty}
+    </span>
+    </p>
+    </div>
+    <div class='card-footer'> 
+    <p class='card-footer-item'> 
+    <span><b>Profit: $</b> 
+    ${profit} 
+    </span> 
+    </p> 
+    <p class='card-footer-item'> 
+    <span><b>ROI: </b> 
+    ${ROI} 
+    %</span> 
+    </p> 
+    </div>
+    `;
+
+  targetElement.appendChild(cardFooterDiv);
 }
