@@ -105,7 +105,7 @@ function searchResultsBuilder(results) {
     // append to container
     searchResultsContainer.append(newDiv);
     // add event listener to add button
-    addButtonSelector = document.querySelector(`#add-collection-${i}`);
+    let addButtonSelector = document.querySelector(`#add-collection-${i}`);
     addButtonSelector.addEventListener('click', () => {
       const imdbID = document.querySelector(`#add-collection-${i}`).dataset
         .imdb;
