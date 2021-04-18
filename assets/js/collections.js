@@ -112,6 +112,7 @@ function constructCollectionHTML() {
       // Dave's function goes here!!
       stageCardDomBuilder(imdbID, 'left');
       console.log('comp-left-button-click', imdbID);
+      getFinancialInfo(imdbID, 'left');
     });
     // add event listener compare right button
     let compareRightButton = document.querySelector(`#compare-right-${i}`);
@@ -120,6 +121,7 @@ function constructCollectionHTML() {
       // Dave's function goes here!!
       stageCardDomBuilder(imdbID, 'right');
       console.log('comp-right-click', imdbID);
+      getFinancialInfo(imdbID, 'right');
     });
 
     // let deleteButton = document.querySelector(`#compare-left-${i}`);

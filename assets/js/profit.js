@@ -1,5 +1,5 @@
 // Calling TMDb API
-function getFinancialInfo(imdbID) {
+function getFinancialInfo(imdbID, side) {
   // API url #1. Takes imdbID.
   var TMDbUrl =
     'https://api.themoviedb.org/3/find/' +
@@ -158,6 +158,7 @@ function getFinancialInfo(imdbID) {
       var adjustedBudget = (263.158 / CPIObject[yearReleased]) * originalBudget;
 
       var adjustedFinancials = {
+        yearProperty: yearReleased,
         overviewProperty: overview,
         adjustedRevenueProperty: adjustedRevenue,
         adjustedBudgetProperty: adjustedBudget,
@@ -165,7 +166,7 @@ function getFinancialInfo(imdbID) {
         originalBudgetProperty: originalBudget,
       };
       console.log(adjustedFinancials);
-      return adjustedFinancials;
+      buildFinanceElement(adjustedFinancials, side);
     });
   });
 }
@@ -174,6 +175,95 @@ var imdbID1 = 'tt0034583'; // Testing above function with a few imdb ID's
 //var imdbID2 = 'tt0120338';
 //var imdbID3 = 'tt0169547';
 
-getFinancialInfo(imdbID1);
+//getFinancialInfo(imdbID1);
 //getFinancialInfo(imdbID2);
 //getFinancialInfo(imdbID3);
+
+//Function to build finance footer element
+
+function buildFinanceElement(objectIn, side) {
+  let stageSide = side;
+  let targetElement = '';
+  if (stageSide === 'left') {
+    targetElement = document.querySelector('#inner-card-left');
+  } else {
+    targetElement = document.querySelector('#inner-card-right');
+  }
+
+  let financeObject = objectIn;
+  //Rounding
+  let roundedAdjustedBudget = Math.round(financeObject.adjustedBudgetProperty);
+  let roundedAdjustedRevenue = Math.round(
+    financeObject.adjustedRevenueProperty
+  );
+
+  // Profit = Revenue-Budget
+  let profit = roundedAdjustedRevenue - roundedAdjustedBudget;
+  // ROI
+  let ROI = (profit / roundedAdjustedBudget) * 100;
+  let roundedROI = Math.round(ROI);
+
+  let finalAdjustedBudget = roundedAdjustedBudget.toLocaleString('en-US');
+  let finalAdjustedRevenue = roundedAdjustedRevenue.toLocaleString('en-US');
+  let finalProfit = profit.toLocaleString('en-US');
+  let finalOriginalRevenue = financeObject.originalRevenueProperty.toLocaleString(
+    'en-US'
+  );
+  let finalOriginalBudget = financeObject.originalBudgetProperty.toLocaleString(
+    'en-US'
+  );
+
+  console.log(financeObject);
+  // let cardFooterDiv = document.createElement('div');
+  // cardFooterDiv.classList.add('card-footer');
+  targetElement.innerHTML += `
+  <div class="card-footer">
+
+    <p class="card-footer-item">
+      <span>
+        <b>Budget (${financeObject.yearProperty}): $</b>
+        ${finalOriginalBudget}
+      </span>
+    </p>
+
+    <p class="card-footer-item">
+      <span><b>Budget (2021): $</b>
+      ${finalAdjustedBudget}
+      </span>
+    </p>
+  </div>
+
+  <div class="card-footer">
+
+    <p class="card-footer-item">
+    <span>
+      <b>Revenue (${financeObject.yearProperty}): $</b>
+      ${finalOriginalRevenue}
+    </span>
+  </p>
+    <p class="card-footer-item">
+      <span> <b>Revenue (2021): $</b>
+      ${finalAdjustedRevenue}
+      </span>
+    </p>
+
+  </div>
+
+  <div class="card-footer">
+    <p class="card-footer-item">
+      <span><b>ROI: </b>
+     ${roundedROI}
+      %</span>
+    </p>
+    <p class="card-footer-item">
+      <span><b>Profit (2021): $</b>
+      ${finalProfit}
+      </span>
+    </p>
+
+  </div>
+
+  `;
+
+  // targetElement.appendChild(cardFooterDiv);
+}

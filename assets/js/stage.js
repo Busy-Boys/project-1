@@ -32,6 +32,7 @@ function stageCardDomBuilder(imdb, side) {
   // start building card with card div
   let newCard = document.createElement('div');
   newCard.classList.add('card');
+  newCard.id = `inner-card-${stageSide}`;
   // add the inner html
   newCard.innerHTML = `
   <div class="card-content">
