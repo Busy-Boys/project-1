@@ -200,7 +200,7 @@ function buildFinanceElement(objectIn, side) {
   // Profit = Revenue-Budget
   let profit = roundedAdjustedRevenue - roundedAdjustedBudget;
   // ROI
-  let ROI = profit / roundedAdjustedBudget;
+  let ROI = (profit / roundedAdjustedBudget) * 100;
   let roundedROI = Math.round(ROI);
 
   let finalAdjustedBudget = roundedAdjustedBudget.toLocaleString('en-US');
@@ -214,55 +214,56 @@ function buildFinanceElement(objectIn, side) {
   );
 
   console.log(financeObject);
-  let cardFooterDiv = document.createElement('div');
-  cardFooterDiv.classList.add('card-footer');
-  cardFooterDiv.innerHTML = `
-    
-    <p class="card-footer-item"> 
-      <span>
-        <b>Budget (${financeObject.yearProperty}): $</b> 
-        ${finalOriginalBudget}
-      </span> 
-    </p>
-    
+  // let cardFooterDiv = document.createElement('div');
+  // cardFooterDiv.classList.add('card-footer');
+  targetElement.innerHTML += `
+  <div class="card-footer">
+
     <p class="card-footer-item">
-      <span> 
+      <span>
+        <b>Budget (${financeObject.yearProperty}): $</b>
+        ${finalOriginalBudget}
+      </span>
+    </p>
+
+    <p class="card-footer-item">
+      <span>
         <b>Revenue (${financeObject.yearProperty}): $</b>
-        ${finalOriginalRevenue} 
+        ${finalOriginalRevenue}
       </span>
     </p>
   </div>
-    
+
   <div class="card-footer">
     <p class="card-footer-item">
       <span><b>Budget (2021): $</b>
       ${finalAdjustedBudget}
       </span>
     </p>
-    
+
     <p class="card-footer-item">
       <span> <b>Revenue (2021): $</b>
       ${finalAdjustedRevenue}
       </span>
     </p>
-    
+
   </div>
-    
-  <div class="card-footer"> 
-    <p class="card-footer-item"> 
-      <span><b>Profit: $</b> 
-      ${finalProfit} 
-      </span> 
-    </p> 
-    
-    <p class="card-footer-item"> 
-      <span><b>ROI: </b> 
-      ${roundedROI} 
-      %</span> 
-    </p> 
+
+  <div class="card-footer">
+    <p class="card-footer-item">
+      <span><b>Profit: $</b>
+      ${finalProfit}
+      </span>
+    </p>
+
+    <p class="card-footer-item">
+      <span><b>ROI: </b>
+      ${roundedROI}
+      %</span>
+    </p>
   </div>
-    
+
   `;
 
-  targetElement.appendChild(cardFooterDiv);
+  // targetElement.appendChild(cardFooterDiv);
 }

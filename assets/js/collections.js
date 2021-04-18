@@ -121,6 +121,7 @@ function constructCollectionHTML() {
       // Dave's function goes here!!
       stageCardDomBuilder(imdbID, 'right');
       console.log('comp-right-click', imdbID);
+      getFinancialInfo(imdbID, 'right');
     });
 
     // let deleteButton = document.querySelector(`#compare-left-${i}`);
