@@ -7,6 +7,11 @@
   justify-content: center !important;
 }
 
+#github-link {
+  text-decoration: none !important;
+  color: aliceblue !important;
+}
+
 /* DH - added second media query to get posters & buttons working nicely on resize */
 @media screen and (max-width: 1220px) {
   .columns.is-mobile > .column.is-2 {
