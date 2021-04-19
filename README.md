@@ -23,9 +23,10 @@ moovie.pro is a film search engine for curating collections and comparing data. 
 - Presentation (gDocs - DH): https://docs.google.com/presentation/d/1gv9gyDsamKki7G_IJToTdn2gSMKsKPZG3JOmLZzKVPc/edit?usp=sharing
 
 ## Technology Used
-
-- Font Awesome Icons: https://fontawesome.com/icons
-- Bulma: https://bulma.io/documentation/
+- namecheap (Domain Name): https://www.namecheap.com/
+- Netlify (Hosting): https://www.netlify.com/
+- Font Awesome (Icons): https://fontawesome.com/icons
+- Bulma (CSS Framework): https://bulma.io/documentation/
 - OMDb API(Movie Info): http://www.omdbapi.com/
 - Tmdb API(Deeper Movie Info[Budget & Revenue]): https://developers.themoviedb.org/3/movies/get-movie-details
 - Utelly API(Streaming Services Search): https://rapidapi.com/utelly/api/utelly/pricing
