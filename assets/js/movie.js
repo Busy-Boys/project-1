@@ -6,7 +6,7 @@ const omdbUrl = `https://www.omdbapi.com/?apikey=${omdbApiKey}&`;
 const searchButton = document.querySelector('#search-button');
 const searchInput = document.querySelector('#search-input');
 
-// function to retreive basic movie information from omdbi
+// function to retreive basic movie information from omdbi <-- I think I have a double promise here
 function searchForMovies(title) {
   return new Promise((resolve, reject) => {
     fetch(`${omdbUrl}s=${title}`)
@@ -24,6 +24,10 @@ function searchForMovies(title) {
 
 // builds the search results container
 function searchResultsBuilder(results) {
+  // remove welcome if displaying
+  if (document.querySelector('#welcome-hero')) {
+    document.querySelector('#welcome-hero').remove();
+  }
   let searchResults = results;
   // check if not a movie and delete -- had to add decrementor to account for the array length changing
   for (let i = 0; i < searchResults.length; i++) {
