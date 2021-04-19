@@ -67,6 +67,11 @@ function constructCollectionHTML() {
 
   // DH - made some changes to build My Collection DOM here, not on page load.
   if (collection.length > 0) {
+    // Turn off welcome-hero
+    if (document.querySelector('#welcome-hero')) {
+      document.querySelector('#welcome-hero').remove();
+    }
+    //DH to comment
     let MyCollectionContainer = document.createElement('div');
     MyCollectionContainer.classList.add('container', 'box');
     MyCollectionContainer.innerHTML = `
