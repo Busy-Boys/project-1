@@ -7,9 +7,10 @@
   justify-content: center !important;
 }
 
-#github-link {
-  text-decoration: none !important;
-  color: aliceblue !important;
+#header-logo {
+  background: url(../logo.png) no-repeat center center;
+  background-size: cover;
+  width: 320px;
 }
 
 /* DH - added second media query to get posters & buttons working nicely on resize */
@@ -33,5 +34,8 @@
 @media screen and (max-width: 768px) {
   .columns.is-mobile > .column.is-2 {
     width: 33%;
+  }
+  #collection-buttons {
+    margin: 3px 0 0 0 !important;
   }
 }

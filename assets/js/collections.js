@@ -79,7 +79,7 @@ function constructCollectionHTML() {
       <img
         src="${collection[i].posterUrl}"
       />
-      <div class="buttons has-addons is-centered is-medium m-2">
+      <div id="collection-buttons" class="buttons has-addons is-centered is-medium m-2">
         <button id="compare-left-${i}" class="button is-small is-size-6-tablet" data-imdb="${collection[i].imdbID}">
           <span class="icon is-small">
             <i class="fas fa-chevron-down"></i>
