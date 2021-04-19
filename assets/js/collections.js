@@ -63,7 +63,7 @@ function constructCollectionHTML() {
   // reading collection from localStorage and assigning to variable
   let collection = localStorage.getItem('Collection');
   collection = JSON.parse(collection);
-  console.log('mycollection:', collection);
+  // console.log('mycollection:', collection);
   // clear div
   if (document.querySelector('#my-collection-container')) {
     document.querySelector('#my-collection-container').remove();
@@ -109,7 +109,7 @@ function constructCollectionHTML() {
   let container = document.querySelector('#my-collection');
 
   for (let i = 0; i < collection.length; i++) {
-    console.log(collection);
+    // console.log(collection);
     let collectionDiv = document.createElement('div');
     collectionDiv.classList.add('column', 'is-2', 'is-one-third-mobile');
     collectionDiv.innerHTML = `<figure class="image is2by3">
@@ -162,11 +162,27 @@ function constructCollectionHTML() {
       getFinancialInfo(imdbID, 'right');
     });
 
-    // let deleteButton = document.querySelector(`#compare-left-${i}`);
-    // compareLeftButton.addEventListener('click', () => {
-    //   const imdbID = document.querySelector(`#compare-left-${i}`).dataset.imdb;
-    //   // Dave's function goes here!!
-    //   console.log('comp-left-button-click', imdbID);
-    // });
+    let deleteButton = document.querySelector(`#delete-${i}`);
+    deleteButton.addEventListener('click', () => {
+      const imdbID = document.querySelector(`#delete-${i}`).dataset.imdb;
+      // remove movie from collection when delete is clicked
+      deleteMovieFromCollection(collection, imdbID);
+      console.log('delete-click', imdbID);
+    });
+  }
+}
+
+function deleteMovieFromCollection(collection, imdbID) {
+  for (let i = 0; i < collection.length; i++) {
+    if (collection[i].imdbID === imdbID) {
+      // delete element from array
+      collection.splice(i, 1);
+      // update the localStorage array
+      localStorage.clear();
+      localStorage.setItem('Collection', JSON.stringify(collection));
+      // rebuild the page with updated array
+      constructCollectionHTML();
+      // console.log('updated upon deletion:', collection);
+    }
   }
 }
