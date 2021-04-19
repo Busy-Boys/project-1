@@ -6,7 +6,7 @@ const omdbUrl = `https://www.omdbapi.com/?apikey=${omdbApiKey}&`;
 const searchButton = document.querySelector('#search-button');
 const searchInput = document.querySelector('#search-input');
 
-// function to retreive basic movie information from omdbi
+// function to retreive basic movie information from omdbi <-- I think I have a double promise here
 function searchForMovies(title) {
   return new Promise((resolve, reject) => {
     fetch(`${omdbUrl}s=${title}`)

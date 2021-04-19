@@ -60,13 +60,38 @@ function getFilmInformation(imdbID) {
 }
 
 function constructCollectionHTML() {
-  console.log('construct called');
+  // reading collection from localStorage and assigning to variable
   let collection = localStorage.getItem('Collection');
-  // clear div
-  document.querySelector('#my-collection').innerHTML = '';
-
   collection = JSON.parse(collection);
   console.log('mycollection:', collection);
+
+  // DH - made some changes to build My Collection DOM here, not on page load.
+  if (collection.length > 0) {
+    let MyCollectionContainer = document.createElement('div');
+    MyCollectionContainer.classList.add('container', 'box');
+    MyCollectionContainer.innerHTML = `
+    <h2 class="title m-2">My Collection</h2>
+    <div class="columns is-mobile is-flex-wrap-wrap" id="my-collection"></div>
+  <div id="stage" class="container">
+    <div class="columns">
+      <!-- DH - added id's to target the build of stagecards -->
+      <div id="stage-card-left" class="column is-half"></div>
+      <!-- DH added id to stage card right -->
+      <div id="stage-card-right" class="column is-half">
+
+      </div>
+    </div>
+    <div class="card"></div>
+  </div>
+    `;
+    // append above to DOM
+    document.querySelector('#main').appendChild(MyCollectionContainer);
+    // clear div
+    document.querySelector('#my-collection').innerHTML = '';
+  }
+
+  console.log('construct called');
+
   // selecting my-collection div by id
   let container = document.querySelector('#my-collection');
 
