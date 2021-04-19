@@ -6,7 +6,7 @@ const omdbUrl = `https://www.omdbapi.com/?apikey=${omdbApiKey}&`;
 const searchButton = document.querySelector('#search-button');
 const searchInput = document.querySelector('#search-input');
 
-// function to retreive basic movie information from omdbi
+// function to retreive basic movie information from omdbi <-- I think I have a double promise here
 function searchForMovies(title) {
   return new Promise((resolve, reject) => {
     fetch(`${omdbUrl}s=${title}`)
@@ -24,6 +24,10 @@ function searchForMovies(title) {
 
 // builds the search results container
 function searchResultsBuilder(results) {
+  // remove welcome if displaying
+  if (document.querySelector('#welcome-hero')) {
+    document.querySelector('#welcome-hero').remove();
+  }
   let searchResults = results;
   // check if not a movie and delete -- had to add decrementor to account for the array length changing
   for (let i = 0; i < searchResults.length; i++) {
@@ -115,13 +119,24 @@ function searchResultsBuilder(results) {
   });
 }
 
-// Event Listener on search but
+// Event Listener on search button
 searchButton.addEventListener('click', () => {
   const title = searchInput.value;
   console.log(title);
   searchForMovies(title)
     .then((searchResults) => searchResultsBuilder(searchResults))
     .catch(() => console.error('Movie Not Found or API Down'));
+});
+
+// Event Listener of Enter Key
+searchInput.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    const title = searchInput.value;
+    console.log(title);
+    searchForMovies(title)
+      .then((searchResults) => searchResultsBuilder(searchResults))
+      .catch(() => console.error('Movie Not Found or API Down'));
+  }
 });
 
 // TEST - AUTOGEN for quick UI CHanges
