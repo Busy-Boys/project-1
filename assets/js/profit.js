@@ -29,7 +29,8 @@ function getFinancialInfo(imdbID, side) {
       var releaseDate = TMDbData2.release_date;
 
       var overview = TMDbData2.overview;
-
+      // DH added this to pass through to straming
+      var imdbID = TMDbData2.imdb_id;
       var originalFinancials = {
         overviewProperty: overview,
         originalRevenueProperty: originalRevenue,
@@ -158,6 +159,8 @@ function getFinancialInfo(imdbID, side) {
       var adjustedBudget = (263.158 / CPIObject[yearReleased]) * originalBudget;
 
       var adjustedFinancials = {
+        // DH passed this through for streaming
+        imdbID: imdbID,
         yearProperty: yearReleased,
         overviewProperty: overview,
         adjustedRevenueProperty: adjustedRevenue,
@@ -182,6 +185,7 @@ var imdbID1 = 'tt0034583'; // Testing above function with a few imdb ID's
 //Function to build finance footer element
 
 function buildFinanceElement(objectIn, side) {
+  let imdbID = objectIn.imdbID;
   let stageSide = side;
   let targetElement = '';
   if (stageSide === 'left') {
@@ -264,6 +268,6 @@ function buildFinanceElement(objectIn, side) {
   </div>
 
   `;
-
+  getStreamingInfo(imdbID, stageSide);
   // targetElement.appendChild(cardFooterDiv);
 }
