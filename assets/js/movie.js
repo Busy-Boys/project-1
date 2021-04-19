@@ -119,13 +119,24 @@ function searchResultsBuilder(results) {
   });
 }
 
-// Event Listener on search but
+// Event Listener on search button
 searchButton.addEventListener('click', () => {
   const title = searchInput.value;
   console.log(title);
   searchForMovies(title)
     .then((searchResults) => searchResultsBuilder(searchResults))
     .catch(() => console.error('Movie Not Found or API Down'));
+});
+
+// Event Listener of Enter Key
+searchInput.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    const title = searchInput.value;
+    console.log(title);
+    searchForMovies(title)
+      .then((searchResults) => searchResultsBuilder(searchResults))
+      .catch(() => console.error('Movie Not Found or API Down'));
+  }
 });
 
 // TEST - AUTOGEN for quick UI CHanges
