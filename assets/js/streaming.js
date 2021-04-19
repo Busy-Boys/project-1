@@ -8,7 +8,7 @@ function getStreamingInfo(imdbID, side) {
   const UTellyFetch = fetch(UTellyURL, {
     method: 'GET',
     headers: {
-      'x-rapidapi-key': 'ccec4ce7b6msh798a7bc7988f7c2p110316jsne9dc9b843b67',
+      'x-rapidapi-key': '56b310ff35msh7f12613d14ae9c8p1e8a37jsn548612459711',
       'x-rapidapi-host':
         'utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com',
     },
