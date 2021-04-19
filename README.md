@@ -1,4 +1,5 @@
 # Group Project #1 - Movie Master
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4cacf7fb-8730-421f-9df0-f75708785f9a/deploy-status)](https://app.netlify.com/sites/moovie-pro/deploys)
 ## Link
 Live Deploy of main here: https://busy-boys.github.io/movie-master/
 
