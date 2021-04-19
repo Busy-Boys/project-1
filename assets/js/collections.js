@@ -80,17 +80,17 @@ function constructCollectionHTML() {
         src="${collection[i].posterUrl}"
       />
       <div class="buttons has-addons is-centered is-medium m-2">
-        <button id="compare-left-${i}" class="button" data-imdb="${collection[i].imdbID}">
+        <button id="compare-left-${i}" class="button is-small is-size-6-tablet" data-imdb="${collection[i].imdbID}">
           <span class="icon is-small">
             <i class="fas fa-chevron-down"></i>
           </span>
         </button>
-        <button id="delete-${i}" class="button is-danger" data-imdb="${collection[i].imdbID}">
+        <button id="delete-${i}" class="button is-danger is-small is-size-6-tablet" data-imdb="${collection[i].imdbID}">
           <span class="icon is-small">
             <i class="fas fa-trash-alt"></i>
           </span>
         </button>
-        <button id="compare-right-${i}" class="button" data-imdb="${collection[i].imdbID}">
+        <button id="compare-right-${i}" class="button is-small is-size-6-tablet " data-imdb="${collection[i].imdbID}">
           <span class="icon is-small">
             <i class="fas fa-chevron-down"></i>
           </span>
