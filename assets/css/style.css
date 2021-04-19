@@ -8,6 +8,13 @@
 }
 
 /* DH - Had to manually add this to get 1/3rd collection posters working on mobile  */
+/* DH - added second media query to get posters & buttons working nicely on resize */
+@media screen and (max-width: 1220px) {
+  .columns.is-mobile > .column.is-2 {
+    width: 25%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .columns.is-mobile > .column.is-2 {
     width: 33%;
