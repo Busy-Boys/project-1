@@ -18,16 +18,7 @@ function getStreamingInfo(imdbID) {
   }).then((UTellyData) => {
     console.log(UTellyData);
 
-    var streamingServiceName = UTellyData.collection.locations[0].display_name;
-    var streamingServiceLink = UTellyData.collection.locations[0].url;
-    var streamingServiceLogo = UTellyData.collection.locations[0].icon;
-
-    var UTellyObject = {
-      name: streamingServiceName,
-      link: streamingServiceLink,
-      logo: streamingServiceLogo,
-    };
-
-    console.log(UTellyObject);
+    let streamingInfo = UTellyData.collection.locations;
+    console.log(streamingInfo);
   });
 }
