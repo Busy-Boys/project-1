@@ -200,7 +200,8 @@ function buildFinanceElement(objectIn, side) {
   // Profit = Revenue-Budget
   let profit = roundedAdjustedRevenue - roundedAdjustedBudget;
   // ROI
-  let ROI = profit / roundedAdjustedBudget;
+  // DH - Changed below from profit to roundedAdjustedRevenue. This was causing funny numbers
+  let ROI = roundedAdjustedRevenue / roundedAdjustedBudget;
   let roundedROI = ROI.toFixed(2);
 
   let finalAdjustedBudget = roundedAdjustedBudget.toLocaleString('en-US');
