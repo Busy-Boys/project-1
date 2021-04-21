@@ -30,8 +30,3 @@ moovie.pro is a film search engine for curating collections and comparing data. 
 - OMDb API(Movie Info): http://www.omdbapi.com/
 - Tmdb API(Deeper Movie Info[Budget & Revenue]): https://developers.themoviedb.org/3/movies/get-movie-details
 - Utelly API(Streaming Services Search): https://rapidapi.com/utelly/api/utelly/pricing
-
-## Reference
-- Lines 69 to 78 of movie.js based on thread on Stack overflow
-User georg Feb 10/12 
-StackOverFlow: http://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
