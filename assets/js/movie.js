@@ -66,19 +66,8 @@ function searchResultsBuilder(results) {
   `;
   mainContainer.prepend(searchResultsContainer);
 
-  // RD added this code, talk about to discuss tonight -- Seems like duplication removal?
-  function uniqBy(results, key) {
-    var seen = {};
-    return results.filter(function (item) {
-      var k = key(item);
-      return seen.hasOwnProperty(k) ? false : (seen[k] = true);
-    });
-  }
-
-  newResults = uniqBy(searchResults, JSON.stringify);
-
   // loop results and generate thumbnails
-  newResults.forEach((result, i) => {
+  searchResults.forEach((result, i) => {
     // target element
     const searchResultsContainer = document.querySelector('#search-results');
     // create div
