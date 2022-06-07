@@ -153,10 +153,19 @@ function getFinancialInfo(imdbID, side) {
         1913: 9.9,
       };
 
-      var adjustedRevenue =
-        (263.158 / CPIObject[yearReleased]) * originalRevenue;
+      const releaseDateCpiMultiplier =
+        yearReleased > 2021
+          ? (yearReleased - 2021) * 3.5 + 263.158
+          : CPIObject[yearReleased];
 
-      var adjustedBudget = (263.158 / CPIObject[yearReleased]) * originalBudget;
+      const currentYearCpiMultiplier =
+        (new Date().getFullYear() - 2021) * 3.5 + 263.158;
+
+      var adjustedRevenue =
+        (currentYearCpiMultiplier / releaseDateCpiMultiplier) * originalRevenue;
+
+      var adjustedBudget =
+        (currentYearCpiMultiplier / releaseDateCpiMultiplier) * originalBudget;
 
       var adjustedFinancials = {
         // DH passed this through for streaming
@@ -211,12 +220,10 @@ function buildFinanceElement(objectIn, side) {
   let finalAdjustedBudget = roundedAdjustedBudget.toLocaleString('en-US');
   let finalAdjustedRevenue = roundedAdjustedRevenue.toLocaleString('en-US');
   let finalProfit = profit.toLocaleString('en-US');
-  let finalOriginalRevenue = financeObject.originalRevenueProperty.toLocaleString(
-    'en-US'
-  );
-  let finalOriginalBudget = financeObject.originalBudgetProperty.toLocaleString(
-    'en-US'
-  );
+  let finalOriginalRevenue =
+    financeObject.originalRevenueProperty.toLocaleString('en-US');
+  let finalOriginalBudget =
+    financeObject.originalBudgetProperty.toLocaleString('en-US');
 
   console.log(financeObject);
   // let cardFooterDiv = document.createElement('div');
@@ -232,7 +239,7 @@ function buildFinanceElement(objectIn, side) {
     </p>
 
     <p class="card-footer-item">
-      <span><b>Budget (2021): </b>
+      <span><b>Budget (${new Date().getFullYear()}): </b>
       $${finalAdjustedBudget}
       </span>
     </p>
@@ -247,7 +254,7 @@ function buildFinanceElement(objectIn, side) {
     </span>
   </p>
     <p class="card-footer-item">
-      <span> <b>Revenue (2021): </b>
+      <span> <b>Revenue (${new Date().getFullYear()}): </b>
       $${finalAdjustedRevenue}
       </span>
     </p>
@@ -260,7 +267,7 @@ function buildFinanceElement(objectIn, side) {
      ${roundedROI}x</span>
     </p>
     <p class="card-footer-item">
-      <span><b>Profit (2021): </b>
+      <span><b>Profit (${new Date().getFullYear()}): </b>
       $${finalProfit}
       </span>
     </p>
